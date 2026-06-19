@@ -1,4 +1,4 @@
-﻿from fastapi import FastAPI
+﻿from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.api.router import api_router
@@ -19,11 +19,25 @@ def create_application() -> FastAPI:
 
     application.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.allowed_origins,
+        allow_origins=[
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+        ],
         allow_credentials=True,
-        allow_methods=["*"],
+        allow_methods=[
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE",
+            "OPTIONS",
+        ],
         allow_headers=["*"],
     )
+
+    @application.options("/{full_path:path}")
+    def options_handler(full_path: str) -> Response:
+        return Response(status_code=204)
 
     application.include_router(
         api_router,

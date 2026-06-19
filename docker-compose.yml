@@ -1,0 +1,33 @@
+﻿services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: tubeintel-backend
+    env_file:
+      - .env
+    environment:
+      ALLOWED_ORIGINS: "http://localhost:3000,http://127.0.0.1:3000"
+      FRONTEND_ORIGINS: "http://localhost:3000,http://127.0.0.1:3000"
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./backend/data/runs:/app/backend/data/runs
+      - ./backend/data/vectors:/app/backend/data/vectors
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://127.0.0.1:8090
+    container_name: tubeintel-frontend
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://127.0.0.1:8090
+      NEXT_TELEMETRY_DISABLED: "1"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
