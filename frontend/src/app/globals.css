@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #131317;
+  color: #e4e1e7;
+  font-family: var(--font-inter), sans-serif;
+}
+
+button,
+a {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+button {
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.chat-markdown h1,
+.chat-markdown h2,
+.chat-markdown h3 {
+  margin: 12px 0 8px;
+  color: #e4e1e7;
+  font-weight: 700;
+}
+
+.chat-markdown h1 {
+  font-size: 20px;
+}
+
+.chat-markdown h2 {
+  font-size: 18px;
+}
+
+.chat-markdown h3 {
+  font-size: 16px;
+}
+
+.chat-markdown p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.chat-markdown ul {
+  margin: 8px 0 12px 20px;
+  padding-left: 12px;
+  list-style-type: disc;
+}
+
+.chat-markdown ol {
+  margin: 8px 0 12px 20px;
+  padding-left: 12px;
+  list-style-type: decimal;
+}
+
+.chat-markdown li {
+  margin-bottom: 6px;
+}
+
+.chat-markdown strong {
+  color: #d2bbff;
+  font-weight: 700;
+}

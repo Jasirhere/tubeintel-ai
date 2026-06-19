@@ -1,0 +1,39 @@
+﻿# Secrets
+.env
+.env.*
+!.env.example
+frontend/.env.local
+frontend/.env.*
+!frontend/.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Backend generated data
+backend/data/runs/*
+!backend/data/runs/.gitkeep
+backend/data/vectors/*
+!backend/data/vectors/.gitkeep
+backend/outputs/
+backend/chroma_db/
+
+# Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# Editors and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.zip
